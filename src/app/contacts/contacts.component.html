@@ -1,2 +1,22 @@
-<p>contacts works!</p>
-<p *ngFor="let contact of contacts"> {{contact.Name}} </p>
+<aside class="sidebar list-group">
+  <div class="bg-gray px-4 py-2 bg-light">
+    <p class="h5 mb-0 py-1 contact">Contacts</p>
+  </div>
+  <nav class="nav">
+    <ul *ngFor="let contact of contacts">
+      <li>
+        <a href="#">
+          <div class="media"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+            <div class="media-body ml-4">
+              <div class="d-flex align-items-center justify-content-between mb-1">
+                <h6  class="mb-0">{{contact.Name}}</h6>
+              </div>
+              <p class="font-italic text-muted mb-0 text-small">Lorem ipsum dolor sit amet, consectetur. incididunt ut labore.</p>
+            </div>
+          </div>
+        </a>
+
+      </li>
+    </ul>
+  </nav>
+</aside>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit {
-
-  constructor() { }
+  messages: [];
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.getMessages();
   }
+
+  getMessages() {
+    this.http.get<any>(`http://localhost:1337/messages`).subscribe((data) => {
+      this.messages = data;
+    });
+  }
+
 
 }

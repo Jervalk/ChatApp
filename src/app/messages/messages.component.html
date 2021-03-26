@@ -1,1 +1,9 @@
-<p>messages works!</p>
+<div class="message-container">
+  <div class="message-content">
+    <p *ngFor="let message of messages">{{message.Content}}</p>
+  </div>
+  <div class="chat-form-bottom">
+    <app-chat-form ></app-chat-form>
+  </div>
+</div>
+

@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import { MessagesComponent } from './messages/messages.component';
 import { ConversationComponent } from './conversation/conversation.component';
+import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,8 +23,9 @@ import { ConversationComponent } from './conversation/conversation.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,1 +1,14 @@
-<p>chat-form works!</p>
+<form class="bg-light">
+  <div class="input-group">
+    <input
+      type="text"
+      name="message"
+      placeholder="Type a message"
+      aria-describedby="button-addon2"
+      class="form-control rounded-0 border-0 py-4 bg-light"
+      [(ngModel)]="message"
+      (keydown)="handleSubmit($event)"
+    />
+    <button type="submit" class="btn btn-link"(click)="sendMessage()">Send</button>
+  </div>
+</form>

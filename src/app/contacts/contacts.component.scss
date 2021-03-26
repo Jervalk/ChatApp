@@ -1,0 +1,45 @@
+.sidebar {
+  height: 100vh;
+  background: white;
+  font-size: 0.65em;
+  border-right: 1px solid #ececec;
+}
+.contact{
+  color:#007bff;
+}
+.nav{
+  margin-top: 15px;
+  overflow-y: scroll;
+
+}
+.nav ul {
+  list-style: none;
+  width: 100%;
+  border-bottom: 1px solid #ececec;
+
+  li {
+    line-height: 4em;
+
+    a {
+      width: 100%;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.4em;
+      color: black;
+      display: block;
+      transition: all ease-out 300ms;
+    }
+
+    &.active a {
+      color: black;
+    }
+
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+
+    &:not(.active):hover a {
+      color: rgba(#007bff, 0.75);
+    }
+  }
+}
