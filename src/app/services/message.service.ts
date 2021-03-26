@@ -7,8 +7,15 @@ import {HttpClient} from '@angular/common/http';
 })
 export class MessageService {
   post: string;
+  messagesConversation: [];
   constructor(private http: HttpClient) { }
 
+  getConversation(id: string) {
+    return this.http.get<any>(`http://localhost:1337/conversations?contacts=${id}`).subscribe(
+      (response) => {
+        this.messagesConversation = response;
+      });
+  }
 
   postMessage(msg: string) {
     this.http.post<any>(`http://localhost:1337/messages`, {
