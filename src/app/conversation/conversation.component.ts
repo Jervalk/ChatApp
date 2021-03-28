@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { ContactService } from '../services/contact.service';
 import {MessageService} from '../services/message.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-conversation',
@@ -18,13 +19,10 @@ export class ConversationComponent implements OnInit {
   }
 
   getConversationMessages() {
-    this.contactId.sub.subscribe((id: string) => {
-      this.messageService.getConversation(id).subscribe((data) => {
-        this.conversation = data;
-        this.conversation.map(item => {
-          this.listMessages = item.messages;
-          console.log(this.listMessages);
-        });
+    this.contactId.sub.subscribe((id: number) => {
+      this.messageService.getConversation(id).subscribe((data: any) => {
+        !data.length ? this.messageService.createConversation(id, 11) : this.conversation = data;
+        this.messageService.setConversation(data[0].id);
       });
     });
   }

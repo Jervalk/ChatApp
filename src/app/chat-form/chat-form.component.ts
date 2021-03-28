@@ -15,7 +15,9 @@ export class ChatFormComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.postMessage(this.message);
+    this.messageService.sub.subscribe((id: number) => {
+      this.messageService.postMessage(this.message, 11, id);
+    });
     this.message = '';
   }
 

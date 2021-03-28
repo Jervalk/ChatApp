@@ -12,26 +12,20 @@ export class ContactsComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private contactId: ContactService,
-  ) { }
+  ) {
+    contactId.getContacts().subscribe((data) => {
+      this.contacts = data;
+    });
+  }
 
   ngOnInit() {
-     this.getContacts();
   }
 
   displayMsgOnClick(id: string) {
-    //this.listMessage.getConversation(id).subscribe((data) => {
-     // this.messages = data;
-    //});
     this.contactId.setSelectedContact(id);
-
   }
 
-  getContacts() {
-    return  this.http.get<any>(`http://localhost:1337/contacts`).subscribe(
-      (response) => {
-        this.contacts = response;
-    });
-  }
+
 
 
 
