@@ -1,5 +1,5 @@
 <p>conversation works!</p>
-<div class="main-container">
-
+<div class="main-container" *ngFor="let message of listMessages">
+  <p>{{message.Content}}</p>
 </div>
 

@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { Message } from '../model/message.model';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -7,14 +6,10 @@ import {HttpClient} from '@angular/common/http';
 })
 export class MessageService {
   post: string;
-  messagesConversation: [];
   constructor(private http: HttpClient) { }
 
   getConversation(id: string) {
-    return this.http.get<any>(`http://localhost:1337/conversations?contacts=${id}`).subscribe(
-      (response) => {
-        this.messagesConversation = response;
-      });
+    return this.http.get(`http://localhost:1337/conversations?contacts=${id}`);
   }
 
   postMessage(msg: string) {
@@ -30,5 +25,9 @@ export class MessageService {
         console.error('There was an error!', error);
       }
     });
+  }
+
+  getMessages() {
+    return this.http.get<any>(`http://localhost:1337/messages`)
   }
 }

@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import { MessageService } from '../services/message.service';
+import { ContactService } from '../services/contact.service';
 
 @Component({
   selector: 'app-contacts',
@@ -9,14 +9,21 @@ import { MessageService } from '../services/message.service';
 })
 export class ContactsComponent implements OnInit {
   contacts = [];
-  constructor(private http: HttpClient, private listMessage: MessageService) { }
+  constructor(
+    private http: HttpClient,
+    private contactId: ContactService,
+  ) { }
 
   ngOnInit() {
      this.getContacts();
   }
 
   displayMsgOnClick(id: string) {
-    this.listMessage.getConversation(id);
+    //this.listMessage.getConversation(id).subscribe((data) => {
+     // this.messages = data;
+    //});
+    this.contactId.setSelectedContact(id);
+
   }
 
   getContacts() {
