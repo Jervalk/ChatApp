@@ -20,6 +20,7 @@ export class ChatFormComponent implements OnInit {
     } else {
       this.messageService.sub.subscribe((id: number) => {
         this.messageService.postMessage(this.message, 11, id);
+        this.messageService.getConversation(id);
       });
       this.message = '';
     }

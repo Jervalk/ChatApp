@@ -1,8 +1,9 @@
-<div class="msg-container" *ngFor="let message of listMessages">
+<div class="msg-container" *ngFor="let message of listMessages" [ngClass]="{'msg-self': message.Sender == 11}">
   <div class="msg-box">
     <div class="flr">
       <div class="messages">
-        <p class="msg">{{message.Content}}</p>
+        <p class="msg" *ngIf="message.Sender != 11">{{message.Content}}</p>
+        <p class="self" *ngIf="message.Sender == 11">{{message.Content}}</p>
       </div>
     </div>
   </div>

@@ -24,17 +24,30 @@ export class ConversationComponent implements OnInit {
         !data.length ? this.messageService.createConversation(id, 11) : this.conversation = data;
         this.messageService.setConversation(data[0].id);
         this.mapData();
+        this.filterMessage();
+
       });
     });
   }
   /*
     Local Storage : https://www.sohamkamani.com/blog/javascript-localstorage-with-ttl-expiry/
-   */
+  */
 
   mapData() {
+    if (this.conversation != null) {
+      this.conversation.map((messagesData) => {
+        this.listMessages = messagesData.messages;
+        //this.addToLocalStorage(JSON.stringify(messagesData), messagesData.id);
+      });
+    }
+  }
+
+  filterMessage() {
     this.conversation.map((messagesData) => {
-      this.listMessages = messagesData.messages;
-      //this.addToLocalStorage(JSON.stringify(messagesData), messagesData.id);
+      const test = messagesData.messages;
+      test.forEach(item => {
+        console.log(item);
+      });
     });
   }
 

@@ -30,17 +30,18 @@
   color: rgba(255,255,255);
 }
 
-.self .msg-box {
+.msg-self .msg-box {
   border-radius: 6px 0 0 6px;
-  background: #2671ff;
+  background: rgba(49, 49, 54, 0.87);
   float: right;
+  color: white;
 }
-.self .user-img {
+.msg-self .user-img {
   margin: 0 0 10px 10px;
 }
-.self .msg {
+.msg-self .msg {
   text-align: right;
 }
-.self .timestamp {
+.msg-self .timestamp {
   text-align: right;
 }

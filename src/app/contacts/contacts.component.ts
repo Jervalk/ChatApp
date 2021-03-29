@@ -13,8 +13,6 @@ export class ContactsComponent {
   constructor(private http: HttpClient, private contactId: ContactService) {
     contactId.getContacts().subscribe((data) => {
       this.contacts = data;
-      console.log(this.contacts);
-
     });
   }
   displayMsgOnClick(id: string) {
