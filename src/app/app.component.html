@@ -2,9 +2,14 @@
   <div class="col-3">
     <app-contacts></app-contacts>
   </div>
-  <div class="col-9">
-    <app-conversation ></app-conversation>
-    <app-chat-form></app-chat-form>
+  <div class="col-9 chatBox">
+    <div class="chatWindow">
+      <app-conversation></app-conversation>
+    </div>
+    <form class="chat-input">
+      <app-chat-form></app-chat-form>
+    </form>
+
   </div>
 </div>
 <router-outlet></router-outlet>

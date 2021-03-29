@@ -1,0 +1,17 @@
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+}
+
+.chatWindow{
+  flex: auto;
+  max-height: calc(100% - 60px);
+  overflow-y: scroll;
+
+}
+.chat-input {
+  flex: 0 0 auto;
+  height: 60px;
+
+}

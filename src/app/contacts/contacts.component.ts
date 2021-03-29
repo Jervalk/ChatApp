@@ -7,26 +7,19 @@ import { ContactService } from '../services/contact.service';
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.scss']
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent {
   contacts = [];
-  constructor(
-    private http: HttpClient,
-    private contactId: ContactService,
-  ) {
+
+  constructor(private http: HttpClient, private contactId: ContactService) {
     contactId.getContacts().subscribe((data) => {
       this.contacts = data;
+      console.log(this.contacts);
+
     });
   }
-
-  ngOnInit() {
-  }
-
   displayMsgOnClick(id: string) {
     this.contactId.setSelectedContact(id);
   }
-
-
-
 
 
 }

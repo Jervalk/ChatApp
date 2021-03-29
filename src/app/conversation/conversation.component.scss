@@ -1,3 +1,46 @@
-.main-container{
+.msg-container {
+  position: relative;
+  display: inline-block;
   width: 100%;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+.msg-box {
+  display: flex;
+  background: #e11678;
+  padding: 10px 10px 0 10px;
+  border-radius: 3px 20px 20px 12px;
+  max-width: 80%;
+  width: auto;
+  float: left;
+}
+.flr {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 50px);
+}
+.messages {
+  flex: 1 0 auto;
+}
+.msg {
+  display: inline-block;
+  font-size: 11pt;
+  line-height: 13pt;
+  color: rgba(255,255,255);
+}
+
+.self .msg-box {
+  border-radius: 6px 0 0 6px;
+  background: #2671ff;
+  float: right;
+}
+.self .user-img {
+  margin: 0 0 10px 10px;
+}
+.self .msg {
+  text-align: right;
+}
+.self .timestamp {
+  text-align: right;
 }

@@ -15,10 +15,14 @@ export class ChatFormComponent implements OnInit {
   }
 
   sendMessage() {
-    this.messageService.sub.subscribe((id: number) => {
-      this.messageService.postMessage(this.message, 11, id);
-    });
-    this.message = '';
+    if (!this.message) {
+      alert('Entrer un message');
+    } else {
+      this.messageService.sub.subscribe((id: number) => {
+        this.messageService.postMessage(this.message, 11, id);
+      });
+      this.message = '';
+    }
   }
 
   handleSubmit(event) {

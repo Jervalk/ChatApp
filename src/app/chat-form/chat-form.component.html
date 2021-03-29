@@ -1,14 +1,17 @@
 <form class="bg-light">
   <div class="input-group">
     <input
+      #input
       type="text"
       name="message"
       placeholder="Type a message"
       aria-describedby="button-addon2"
-      class="form-control rounded-0 border-0 py-4 bg-light"
+      class="form-control"
       [(ngModel)]="message"
       (keydown)="handleSubmit($event)"
     />
-    <button type="submit" class="btn btn-link"(click)="sendMessage()">Send</button>
+    <span class="input-group-btn">
+    <button [disabled]="!input.value" type="submit" class="btn btn-link"(click)="sendMessage()">Send</button>
+   </span>
   </div>
 </form>
