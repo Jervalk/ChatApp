@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ReplaySubject} from 'rxjs';
+import {BehaviorSubject, Observable, ReplaySubject} from 'rxjs';
+import {ContactService} from './contact.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,14 @@ import {ReplaySubject} from 'rxjs';
 export class MessageService {
   post: string;
   sub = new ReplaySubject(1);
-  constructor(private http: HttpClient) { }
+  conversationData = new BehaviorSubject([]);
+  constructor(private http: HttpClient, private contactId: ContactService) { }
 
 
   getConversation(id: number) {
-    return this.http.get(`http://localhost:1337/conversations?contacts=${id}`);
+    this.http.get<any>(`http://localhost:1337/conversations?contacts=${id}`).subscribe((data) => {
+      this.conversationData.next(data);
+    });
   }
 
   createConversation(contactId: number, senderId: number) {
@@ -20,7 +24,7 @@ export class MessageService {
       contacts: [{id: contactId}, {id: senderId}],
     }).subscribe({
       next: data => {
-        console.log('Data posted successfully', data);
+        console.log('Conversation posted successfully', data);
       },
       error: error => {
         console.error('There was an error!', error);

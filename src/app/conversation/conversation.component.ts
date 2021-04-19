@@ -20,12 +20,13 @@ export class ConversationComponent implements OnInit {
 
   getConversationMessages() {
     this.contactId.sub.subscribe((id: number) => {
-      this.messageService.getConversation(id).subscribe((data: any) => {
-        !data.length ? this.messageService.createConversation(id, 11) : this.conversation = data;
-        this.messageService.setConversation(data[0].id);
+      this.messageService.getConversation(id);
+      this.messageService.conversationData.subscribe((data) => {
+        this.conversation = data;
+        this.messageService.setConversation(this.conversation[0].id);
         this.mapData();
-        this.filterMessage();
 
+        // !data.length ? this.messageService.createConversation(id, 11) : this.conversation = data;
       });
     });
   }
@@ -34,12 +35,10 @@ export class ConversationComponent implements OnInit {
   */
 
   mapData() {
-    if (this.conversation != null) {
       this.conversation.map((messagesData) => {
         this.listMessages = messagesData.messages;
-        //this.addToLocalStorage(JSON.stringify(messagesData), messagesData.id);
+        // this.addToLocalStorage(JSON.stringify(messagesData), messagesData.id);
       });
-    }
   }
 
   filterMessage() {

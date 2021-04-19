@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../services/message.service';
+import {ContactService} from '../services/contact.service';
 
 @Component({
   selector: 'app-chat-form',
@@ -9,7 +10,7 @@ import { MessageService } from '../services/message.service';
 export class ChatFormComponent implements OnInit {
 
   message: string;
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService, private contactId: ContactService) { }
 
   ngOnInit() {
   }
@@ -20,10 +21,9 @@ export class ChatFormComponent implements OnInit {
     } else {
       this.messageService.sub.subscribe((id: number) => {
         this.messageService.postMessage(this.message, 11, id);
-        this.messageService.getConversation(id);
       });
-      this.message = '';
     }
+    return this.message = '';
   }
 
   handleSubmit(event) {
